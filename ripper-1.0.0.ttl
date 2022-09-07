@@ -1,0 +1,247 @@
+@prefix : <http://purl.org/ripper#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dsco: <https://w3id.org/dcso/ns/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@base <http://purl.org/ripper> .
+
+<http://purl.org/ripper> rdf:type owl:Ontology .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/ripper#hasContributor
+:hasContributor rdf:type owl:ObjectProperty ;
+            rdfs:domain :Project ;
+            rdfs:range dsco:Contributor .
+
+###  http://purl.org/ripper#hasTestCase
+:hasTestCase rdf:type owl:ObjectProperty ;
+            rdfs:domain :Project ;
+            rdfs:range :TestCase .
+
+###  http://purl.org/ripper#hasMeasurement
+:hasMeasurement rdf:type owl:ObjectProperty ;
+            rdfs:domain :TestCase ;
+            rdfs:range :Measurement .
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://xmlns.com/foaf/0.1/name
+foaf:name rdf:type owl:DatatypeProperty ;
+          rdfs:domain dsco:Contributor ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Name" .
+
+###  http://xmlns.com/foaf/0.1/mbox
+foaf:mbox rdf:type owl:DatatypeProperty ;
+          rdfs:domain dsco:Contributor ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Email" .
+
+###  https://w3id.org/dcso/ns/core#hasContributorId
+dsco:hasContributorId rdf:type owl:DatatypeProperty ;
+          rdfs:domain dsco:Contributor ;
+          rdfs:range xsd:string ;
+          rdfs:comment "ORCID" .
+
+###  http://www.w3.org/ns/org#memberOf
+org:memberOf rdf:type owl:DatatypeProperty ;
+          rdfs:domain dsco:Contributor ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Affiliation" .
+###  https://w3id.org/dcso/ns/core#role
+dsco:role rdf:type owl:DatatypeProperty ;
+          rdfs:domain dsco:Contributor ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Role" .
+
+###  https://w3id.org/dcso/ns/core#licenseRef
+:licenseRef rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Project ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Licence" .
+
+###  http://purl.org/ripper#testName
+:testName rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Název prováděného testu" .
+
+###  http://purl.org/ripper#testMode
+:testMode rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Režim testování" .
+
+###  http://purl.org/ripper#testType
+:testType rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Způsob testování" .
+
+###  http://purl.org/ripper#title
+:title rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Nadpis" .
+
+###  http://purl.org/ripper#comment
+:comment rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Komentář" .
+
+###  http://purl.org/ripper#keyword
+:keyword rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Klíčová slova" .
+
+###  http://purl.org/ripper#productName
+:productName rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Název testovaného produktu" .
+
+###  http://purl.org/ripper#testFileName
+:testFileName rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Název souboru testu" .
+
+###  http://purl.org/ripper#methodFileName
+:methodFileName rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Název souboru obsahující metodiku testu" .
+
+###  http://purl.org/ripper#reportDate
+:reportDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain :TestCase ;
+            rdfs:range xsd:date ;
+            rdfs:comment "Datum reportu dat" .
+
+###  http://purl.org/ripper#testDate
+:testDate rdf:type owl:DatatypeProperty ;
+            rdfs:domain :TestCase ;
+            rdfs:range xsd:date ;
+            rdfs:comment "Datum testování" .
+
+###  http://purl.org/ripper#speed
+:speed rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Rychlost vzdalování čelistí trhačky" .
+
+###  http://purl.org/ripper#shape
+:shape rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:string ;
+          rdfs:comment "Tvar testovaného vzorku" .
+
+###  http://purl.org/ripper#noOfBatches
+:noOfBatches rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Počet testovaných serií" .
+
+###  http://purl.org/ripper#qtyBatch
+:qtyBatch rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Počet vzorků v serii" .
+
+# ------------------------------------------------------------------------
+
+###  http://purl.org/ripper#elastic
+:elastic rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Youngův modul pružnosti" .
+
+###  http://purl.org/ripper#ypForce
+:ypForce rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Mez pružnosti" .
+
+###  http://purl.org/ripper#maxDispStroke
+:maxDispStroke rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Maximální délka při které došlo k přetrhnutí vzorku" .
+
+###  http://purl.org/ripper#maxDispStrain
+:maxDispStrain rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Procentuální prodloužení vzorku při přetrhnutí" .
+
+###  http://purl.org/ripper#maxForce
+:maxForce rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Nejvyšší dosažená síla" .
+
+###  http://purl.org/ripper#breakForce
+:breakForce rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Síla při které došlo k přetržení vzorku" .
+
+###  http://purl.org/ripper#maxStress
+:maxStress rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Nejvyšší dosažené napětí" .
+
+###  http://purl.org/ripper#breakStress
+:breakStress rdf:type owl:DatatypeProperty ;
+          rdfs:domain :TestCase ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Napětí při kterém došlo k přetržení vzorku" .
+
+# ------------------------------------------------------------------------
+
+###  http://purl.org/ripper#time
+:time rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Measurement ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Vypisuje čas testu každých 10 ms" .
+
+###  http://purl.org/ripper#force
+:force rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Measurement ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Vypisuje naměřenou sílu každých 10 ms" .
+
+###  http://purl.org/ripper#stroke
+:stroke rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Measurement ;
+          rdfs:range xsd:decimal ;
+          rdfs:comment "Vypisuje prodloužení každých 10 ms" .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.org/ripper#Project
+:Project rdf:type owl:Class .
+
+
+###  http://purl.org/ripper#TestCase
+:TestCase rdf:type owl:Class .
+
+
+###  http://purl.org/ripper#Measurement
+:Measurement rdf:type owl:Class .
+
